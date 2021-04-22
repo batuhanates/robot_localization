@@ -1,8 +1,8 @@
 <launch>
 
 <include file="$(find map_provider)/launch/map_provider.launch" />
-<include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/>
-<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/>
+<!-- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch"/> -->
+<!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch"/> -->
 
 <node pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find amcl)/rviz/amcl.rviz"/>
 
@@ -35,7 +35,7 @@
     <!-- <param name="laser_model_type" value="beam"/> -->
     <param name="laser_likelihood_max_dist" value="2.0"/>
     <param name="update_min_d" value="0.01"/>
-    <param name="update_min_a" value="0.025"/>
+    <param name="update_min_a" value="0.25"/>
     <param name="odom_frame_id" value="odom"/>
     <param name="resample_interval" value="1"/>
     <param name="transform_tolerance" value="0.1"/>
@@ -47,6 +47,7 @@
     <param name="tf_broadcast" value="false"/>
 </node>
 
-<node pkg="amcl" type="amcl_error" name="amcl_error" output="screen" />
+<!-- <node pkg="amcl" type="amcl_error" name="amcl_error" output="screen" /> -->
+<node pkg="amcl" type="amcl_error_latch" name="amcl_error_latch" output="screen" />
 
 </launch>
